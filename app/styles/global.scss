@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "./home.scss";
+@import "./../components/header/header.scss";
+@import "./components/button.scss";
 * {
   margin: 0;
   padding: 0;
@@ -31,8 +33,19 @@ input,
 button {
   font: inherit;
 }
-
 body {
   background: #f5f5f5;
   color: #333;
+  .main-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    .content-page {
+      flex: 1;
+      height: 2000px;
+      background-color: aquamarine;
+    }
+  }
 }
