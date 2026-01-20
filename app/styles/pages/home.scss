@@ -116,11 +116,15 @@
           color: #6100d2;
         }
       }
-      .project-location {
+      .solution-name {
+        font-family: "Rowdies", sans-serif;
+      }
+      .solution-des {
         display: block;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 21px;
-        color: #8c8c8c;
+        color: #212020;
+        font-style: italic;
         padding-bottom: 20px;
         margin-bottom: 20px;
         position: relative; // QUAN TRỌNG
@@ -134,9 +138,49 @@
           height: 1px;
         }
       }
-      .style-apartment-type {
+      .price {
         margin-bottom: 20px;
       }
+      .category-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .tag {
+          padding: 4px 10px;
+          font-size: 13px;
+          line-height: 1.4;
+          border-radius: 999px; // pill
+          background-color: #f1f3f5;
+          color: #333;
+          white-space: nowrap;
+
+          transition: all 0.2s ease;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #989ccb;
+          }
+        }
+      }
+    }
+  }
+  .solution-item {
+    text-decoration: none;
+    font-weight: 500;
+    color: #212020;
+
+    width: 100%;
+    display: block;
+    .solution-thumb {
+      position: relative;
+      width: 100%;
+      margin-bottom: 12px;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s;
+      aspect-ratio: 16 / 9;
     }
   }
 }

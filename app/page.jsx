@@ -3,39 +3,30 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Link from "next/link";
 
 export default function Home() {
-  const [data, setData] = useState([]);
+  const [dataSolutions, setDataSolutions] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const getApi = async () => {
     setLoading(true);
-    const result = await fetch(
-      "https://houze-portal-api.houze.io/portal/project-developers?limit=12"
-    );
-    const dataProject = await result.json();
-    console.log("dataProject", dataProject);
-    setData(dataProject.results ?? []);
+    const result = await fetch("http://170.64.179.146:8060/api/job/solutions");
+    const res = await result.json();
+    console.log("solutions", res);
+    setDataSolutions(res ?? []);
     setLoading(false);
   };
 
   useEffect(() => {
     getApi();
   }, []);
+  useEffect(() => {
+    console.log("check", dataSolutions.length);
+  }, [dataSolutions]);
 
   return (
     <div className="content-page">
-      {/* {!loading && data && data.length > 0 ? (
-        <>
-          {data.map((object, i) => (
-            <div key={i}>
-              <p>{object.name ?? ""}</p>
-            </div>
-          ))}
-        </>
-      ) : (
-        <></>
-      )} */}
       <div className="banner-home">
         <Image
           src="/banners/section_hero-image-3.jpg"
@@ -53,33 +44,128 @@ export default function Home() {
           </a>
         </div>
       </div>
+
       <div className="home-project">
         <div className="container">
-          <h1>Dự án mới nổi bật</h1>
-          <p>
-            Tổng hợp thông tin của các dự án đáng sống và tiềm năng sinh lời cao
-          </p>
-          <div className="row">
-            <div className="col-md-12">
-              <div className="project-top">
-                <div className="project-thumb-top">
-                  <img src="/projects/project-thumb-1.png" alt="thumbnail" />
-                </div>
-                <div className="project-content">
-                  <p className="project-status comming-status">
-                    Sắp mở bán <small>Ngày mở bán dự kiến: 21/12/2025</small>
-                  </p>
-                  <h3>The Ápira </h3>
-                  <p className="project-location">
-                    Phường Tân Đông Hiệp, Thành phố Dĩ An, Bình Dương
-                  </p>
-                  <p className="style-apartment-type">
-                    <b>38tr/m2</b>
-                  </p>
+          <h1>Solution outstanding</h1>
+          <p>Tổng hợp thông tin của các solution tiềm năng</p>
+          {dataSolutions.length > 4 ? (
+            <div className="row">
+              <div className="col-md-12">
+                <div className="project-top">
+                  <div className="project-thumb-top">
+                    <img
+                      src={
+                        dataSolutions[0].imageUrl ??
+                        "/solutions/job-solution.png"
+                      }
+                      alt="thumbnail"
+                    />
+                  </div>
+                  <div className="project-content">
+                    <h3 className="solution-name">
+                      {dataSolutions[0].solutionName ?? ""}{" "}
+                    </h3>
+                    <p className="solution-des">
+                      {dataSolutions[0].description ?? ""}
+                    </p>
+                    <p>
+                      <label className="me-2" htmlFor="price">
+                        Price:{" "}
+                      </label>
+                      <span className="price">
+                        <b>{dataSolutions[0].price ?? ""}</b>
+                      </span>
+                      <i className="fa-solid fa-dollar-sign"></i>
+                    </p>
+                    <p>
+                      <label className="me-2" htmlFor="price">
+                        Sold:{" "}
+                      </label>
+                      <span className="price">
+                        <b>{dataSolutions[0].processedNumber ?? ""}</b>
+                      </span>
+                    </p>
+                    <p>
+                      <label className="me-2" htmlFor="price">
+                        Provider:{" "}
+                      </label>
+                      <span className="price">
+                        <b>Unknown</b>
+                      </span>
+                    </p>
+                    <div className="category-tags">
+                      {dataSolutions[0].categories?.map((object, index) => (
+                        <div className="tag" key={index}>
+                          {object.categoryName}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="col-lg-4 col-md-6 col-xs-12">
+                  <Link
+                    className="solution-item"
+                    href={`/du-an/${dataSolutions[i].solutionId}`}
+                  >
+                    <div className="solution-thumb">
+                      <img
+                        src={
+                          dataSolutions[i].imageUrl ??
+                          "/solutions/job-solution.png"
+                        }
+                        alt="solution-logo"
+                      />
+                    </div>
+                    <div className="solution-content">
+                      <h3 className="solution-name">
+                        {dataSolutions[i].solutionName ?? ""}{" "}
+                      </h3>
+                      <p className="solution-des">
+                        {dataSolutions[i].description ?? ""}
+                      </p>
+                      <p>
+                        <label className="me-2" htmlFor="price">
+                          Price:{" "}
+                        </label>
+                        <span className="price">
+                          <b>{dataSolutions[i].price ?? ""}</b>
+                        </span>
+                        <i className="fa-solid fa-dollar-sign"></i>
+                      </p>
+                      <p>
+                        <label className="me-2" htmlFor="price">
+                          Sold:{" "}
+                        </label>
+                        <span className="price">
+                          <b>{dataSolutions[i].processedNumber ?? ""}</b>
+                        </span>
+                      </p>
+                      <p>
+                        <label className="me-2" htmlFor="price">
+                          Provider:{" "}
+                        </label>
+                        <span className="price">
+                          <b>Unknown</b>
+                        </span>
+                      </p>
+                      <div className="category-tags">
+                        {dataSolutions[i].categories?.map((object, index) => (
+                          <div className="tag" key={index}>
+                            {object.categoryName}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
             </div>
-          </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>
