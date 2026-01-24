@@ -108,7 +108,7 @@ export default function Home() {
                 <div key={i} className="col-lg-4 col-md-6 col-xs-12">
                   <Link
                     className="solution-item"
-                    href={`/du-an/${dataSolutions[i].solutionId}`}
+                    href={`/solution/${dataSolutions[i].solutionId}`}
                   >
                     <div className="solution-thumb">
                       <img

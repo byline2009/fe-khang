@@ -5,7 +5,7 @@ import SolutionDetailClient from "../../components/slick/SolutionDetailClient";
 export default async function SolutionDetail({ params }) {
   const { id } = params;
   return (
-    <div>
+    <div className="content-page">
       <SolutionDetailClient />
     </div>
   );
