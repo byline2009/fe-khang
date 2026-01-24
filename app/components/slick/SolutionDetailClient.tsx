@@ -4,7 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React from "react";
 import Slider from "react-slick";
-import "./slick-solution.scss"
+import "./slick-solution.scss";
+import Image from "next/image";
 
 
 const imgs = [
@@ -19,22 +20,27 @@ export default function SolutionDetailClient({ id }: { id: string }) {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        initialSlide: 2
+        initialSlide: 2,
+        autoplay: true, // Enable automatic transition
+        autoplaySpeed: 2000 // Delay in milliseconds between slides
     };
     return (
+        <div className="container mx-auto">
+            <div className="slider-container ">
+                <Slider {...settings}>
+                    {
 
-        <div className="slider-container">
-            <Slider {...settings}>
-                {
-                    imgs.map((url) => (<div key={url}>
-                        <img src={url} alt="" />
-                    </div>))
-                }
+                        imgs.map((url) => (<div className="img-wrapper" key={url}>
+                            <Image src={url} alt="" fill />
+                        </div>))
+                    }
 
-            </Slider>
+                </Slider>
+            </div>
+
+
         </div>
 
     );

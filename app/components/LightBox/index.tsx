@@ -1,7 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
 import React, { useState, useEffect, useRef } from 'react'
 import Slider from 'react-slick'
-import { arrayDirection } from '@config/constants'
+import { arrayDirection } from '@config/constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 const Lightbox = ({
   isOpen,
   onCloseLB,
@@ -13,7 +16,7 @@ const Lightbox = ({
   const [firstClick, setFirstClick] = useState<boolean>(false)
 
   const slider = useRef<any>({})
-  
+
   const handleClose = () => {
     setPhotoIndex(indexImg)
     onCloseLB()
@@ -34,7 +37,7 @@ const Lightbox = ({
       })
     }
     return () => {
-      document.removeEventListener('keydown', () => {})
+      document.removeEventListener('keydown', () => { })
     }
   })
   useEffect(() => {
@@ -115,7 +118,7 @@ const Lightbox = ({
     }
   }
 
-  
+
 
   return (
     <div className={`light-box ${isOpen && 'show'}`}>
@@ -145,7 +148,9 @@ const Lightbox = ({
             onClick={() => handlePrev()}
             onKeyDown={(e: any) => keyControl(e)}
           >
-            <i className="icon-chevron-left"></i>
+            {/* <i className="icon-chevron-left"></i> */}
+            <FontAwesomeIcon icon={faArrowRight} />
+
           </button>
         )}
         {photoIndex + 1 !== listImages.length && (
@@ -154,36 +159,25 @@ const Lightbox = ({
             onClick={() => handleNext()}
             onKeyDown={(e: any) => keyControl(e)}
           >
-            <i className="icon-chevron-right"></i>
+            {/* <i className="icon-chevron-right"></i> */}
+            <FontAwesomeIcon icon={faArrowLeft} />
+
           </button>
         )}
         <div className="container container-light-box">
           {listImages.length > 0 && (
             <Slider ref={slider} {...settings} afterChange={afterChange}>
-              {listImages.map((item: any) => (
-                <div key={item.id}>
+              {listImages.map((item: any, index: number) => (
+                <div key={index}>
                   <div className="carousel-img">
-                    {lightBoxType === 'image' && (
+                    {(
                       <img
                         className="d-block"
-                        src={item.image}
-                        alt={item.name}
+                        src={item}
+                        alt={item}
                       />
                     )}
-                    {lightBoxType === 'apartment' && (
-                      <img
-                        className="d-block"
-                        src={item.renders[0]?.image}
-                        alt={item.renders[0]?.name}
-                      />
-                    )}
-                    {lightBoxType === 'block' && (
-                      <img
-                        className="d-block"
-                        src={item.design_album_items[0]?.image}
-                        alt={item.design_album_items[0]?.name}
-                      />
-                    )}
+
                   </div>
                 </div>
               ))}

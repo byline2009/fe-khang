@@ -1,0 +1,161 @@
+$white: #fff;
+$black: #000;
+$orange: #ff9d04;
+$red: red;
+$aqua: #03e1bf;
+$yellow: #ebff79;
+$beige: #ffd68e;
+$mustard: #ffc35b;
+$dark-tan: #ab8a41;
+$canary: #fff95f;
+$off-white: #fefffe;
+$brownish-grey: #676767;
+$orangey-red: #ff3434;
+$sandy: #e4bc89;
+$burnt-yellow: #e89c0a;
+$chambray: #505e6e;
+$charcoal-grey: #323844;
+$dark-beige: #9c906d;
+$cyan-blue: #202a39;
+$dark-shade-cyan: #242e3a;
+$light-orange: #ffcb70;
+$bright-orange: #ffcf82;
+$yellow-1: #fad029;
+$pale-peach: #ffe2a9;
+$faux-charcoal: #383d45;
+$green-katamari: #5eff75;
+
+$neutral-grey-50: #fcfcfc;
+$neutral-grey-100: #f8f8f8;
+$neutral-grey-200: #eaeaea;
+$neutral-grey-300: #d3d3d3;
+$neutral-grey-400: #b2b2b2;
+$neutral-grey-500: #8c8c8c;
+$neutral-grey-600: #656565;
+$neutral-grey-700: #444;
+$neutral-grey-800: #2c2c2c;
+$neutral-grey-900: #1e1e1e;
+$neutral-grey-950: #1a1a1a;
+$opacity-white-white: #fff;
+$opacity-white-90: rgba(255, 255, 255, 0.9);
+$opacity-white-80: rgba(255, 255, 255, 0.8);
+$opacity-white-70: rgba(255, 255, 255, 0.7);
+$opacity-white-60: rgba(255, 255, 255, 0.6);
+$opacity-white-50: rgba(255, 255, 255, 0.5);
+$opacity-white-40: rgba(255, 255, 255, 0.4);
+$opacity-white-30: rgba(255, 255, 255, 0.3);
+$opacity-white-20: rgba(255, 255, 255, 0.2);
+$opacity-white-10: rgba(255, 255, 255, 0.1);
+$opacity-white-5: rgba(255, 255, 255, 0.05);
+$opacity-white-1: rgba(255, 255, 255, 0.01);
+$semantic-success: #55cfab;
+$semantic-warning: #ffd200;
+$semantic-error: #ff5126;
+
+// font-weight
+$font-light: 300;
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// responsive
+$extra-extra-large: 1400px;
+$extra-large: 1200px;
+$medium: 960px;
+$small: 480px;
+
+$w-number-icon: 35px;
+
+$bg-tooltip: #1c2c2f;
+
+//margin padding
+$spacing-xxs: 2px;
+$spacing-xs: 4px;
+$spacing-s: 8px;
+$spacing-m: 12px;
+$spacing-l: 16px;
+$spacing-xl: 20px;
+$spacing-xxl: 24px;
+$spacing-xxl-2: 32px;
+$spacing-xxl-3: 40px;
+$spacing-xxl-4: 48px;
+$spacing-xxl-5: 64px;
+
+//font-size
+$caption-2: 10px;
+$caption-1: 12px;
+$subhead: 14px;
+$body: 16px;
+$headline-2: 20px;
+$headline-1: 24px;
+$title-3: 32px;
+$title-2: 40px;
+$title-1: 50px;
+$large-title: 64px;
+
+//line-height
+$lh-caption-2: 16px;
+$lh-caption-1: 18px;
+$lh-subhead: 21px;
+$lh-body: 24px;
+$lh-headline-2: 30px;
+$lh-headline-1: 36px;
+$lh-title-3: 48px;
+$lh-title-2: 56px;
+$lh-title-1: 70px;
+$lh-large-title: 90px;
+
+// set fz 12> 100 by fz-12 .. fz-100
+@for $i from 8 through 20 {
+  .fz-#{$i} {
+    font-size: #{$i}px !important;
+  }
+}
+
+//box-shadow
+$shadow-light-20:
+  0px 0px 1px rgba(44, 44, 44, 0.05),
+  0px 2px 4px rgba(44, 44, 44, 0.1);
+$shadow-light-40:
+  0px 0px 1px rgba(44, 44, 44, 0.05),
+  0px 4px 8px rgba(44, 44, 44, 0.1);
+$shadow-light-60:
+  0px 0px 1px rgba(44, 44, 44, 0.05),
+  0px 8px 16px rgba(44, 44, 44, 0.1);
+$shadow-light-80:
+  0px 0px 1px rgba(44, 44, 44, 0.05),
+  0px 16px 24px rgba(44, 44, 44, 0.1);
+$shadow-light-100:
+  0px 0px 1px rgba(44, 44, 44, 0.05),
+  0px 24px 32px rgba(44, 44, 44, 0.1);
+$shadow-dark-20:
+  0px 0px 1px #0d0d0d,
+  0px 2px 4px rgba(13, 13, 13, 0.9);
+$shadow-dark-40:
+  0px 0px 1px #0d0d0d,
+  0px 4px 8px rgba(13, 13, 13, 0.9);
+$shadow-dark-60:
+  0px 0px 1px #0d0d0d,
+  0px 8px 16px rgba(13, 13, 13, 0.9);
+$shadow-dark-80:
+  0px 0px 1px #0d0d0d,
+  0px 16px 24px rgba(13, 13, 13, 0.9);
+$shadow-dark-100:
+  0px 0px 1px #0d0d0d,
+  0px 24px 32px rgba(13, 13, 13, 0.9);
+$shadow-primary-20:
+  0px 0px 1px rgba(75, 0, 150, 0.05),
+  0px 2px 4px rgba(75, 0, 150, 0.1);
+$shadow-primary-40:
+  0px 0px 1px rgba(75, 0, 150, 0.05),
+  0px 4px 8px rgba(75, 0, 150, 0.1);
+$shadow-primary-60:
+  0px 0px 1px rgba(75, 0, 150, 0.05),
+  0px 8px 16px rgba(75, 0, 150, 0.1);
+$shadow-primary-80:
+  0px 0px 1px rgba(75, 0, 150, 0.05),
+  0px 16px 24px rgba(75, 0, 150, 0.1);
+$shadow-primary-100:
+  0px 0px 1px rgba(75, 0, 150, 0.05),
+  0px 24px 32px rgba(75, 0, 150, 0.1);
