@@ -1,13 +1,16 @@
+/* eslint-disable react-hooks/immutability */
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
-
+import { redirect } from "next/navigation";
 export default function Home() {
   const [dataSolutions, setDataSolutions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [accessToken, setAccessToken] = useState();
+  const [user, setUser] = useState({});
 
   const getApi = async () => {
     setLoading(true);
@@ -20,10 +23,40 @@ export default function Home() {
 
   useEffect(() => {
     getApi();
+    // login();
   }, []);
   useEffect(() => {
     console.log("check", dataSolutions.length);
   }, [dataSolutions]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    const user = localStorage.getItem("user");
+
+    if (token) {
+      setAccessToken(token);
+    }
+
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+    if (!token) {
+      redirect("/login");
+    }
+  }, []);
+
+  // const login = () => {
+  //   fetch("https://api.escuelajs.co/api/v1/auth/login", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({
+  //       email: "john@mail.com",
+  //       password: "changeme",
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then(console.log);
+  // };
 
   return (
     <div className="content-page">
