@@ -7,6 +7,7 @@ import Lightbox from "../../components/LightBox";
 
 export default async function SolutionDetail({ params }) {
   const { id } = await params;
+  
   return (
     <div className="content-page">
       {/* <SolutionDetailClient /> */}

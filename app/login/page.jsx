@@ -15,7 +15,7 @@ export default function LoginPage() {
       return;
     }
     setLoading(true);
-    const result = await fetch("https://api.escuelajs.co/api/v1/auth/login", {
+    const result = await fetch("http://localhost:3001/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

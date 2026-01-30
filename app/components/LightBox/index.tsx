@@ -1,9 +1,14 @@
+/* eslint-disable @next/next/no-async-client-component */
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React, { useState, useEffect, useRef } from 'react'
 import Slider from 'react-slick'
-import { arrayDirection } from '@config/constants';
+import { arrayDirection } from '@/config/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
 
 const Lightbox = ({
   isOpen,
@@ -14,6 +19,37 @@ const Lightbox = ({
 }: any) => {
   const [photoIndex, setPhotoIndex] = useState<any>(indexImg)
   const [firstClick, setFirstClick] = useState<boolean>(false)
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    console.log("token", token);
+    fetch("http://localhost:3001/api/auth/profile", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+
+      },
+      cache: "no-store"
+
+    }).then(async (result) => {
+      if (result.status == 401) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("user");
+        router.push("/login");
+        return
+      }
+      const res = await result.json();
+      console.log("result", res)
+
+    }).catch((error) => {
+      console.log("error", error)
+        ;
+    });
+
+  }, [])
+
 
   const slider = useRef<any>({})
 

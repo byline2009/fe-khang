@@ -6,6 +6,7 @@ import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { makeRequestNoAuth } from "@/helpers/axios";
 export default function Home() {
   const [dataSolutions, setDataSolutions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -14,10 +15,11 @@ export default function Home() {
 
   const getApi = async () => {
     setLoading(true);
-    const result = await fetch("http://170.64.179.146:8060/api/job/solutions");
-    const res = await result.json();
-    console.log("solutions", res);
-    setDataSolutions(res ?? []);
+    const result = await makeRequestNoAuth({
+      url: "http://170.64.179.146:8060/api/job/solutions",
+    });
+    console.log("solutions", result);
+    setDataSolutions(result.data ?? []);
     setLoading(false);
   };
 
