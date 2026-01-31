@@ -5,7 +5,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react'
 import Slider from 'react-slick'
-import { arrayDirection } from '@/config/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
@@ -261,16 +260,7 @@ const Lightbox = ({
                       {listImages[photoIndex].carpet_area} m<sup>2</sup>
                     </span>
                   )}
-                {listImages[photoIndex].balcony_direction && (
-                  <span>
-                    {
-                      arrayDirection.find(
-                        it =>
-                          it.value === listImages[photoIndex].balcony_direction
-                      ).label
-                    }
-                  </span>
-                )}
+
               </div>
             )}
           </>
