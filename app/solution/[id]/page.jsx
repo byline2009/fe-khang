@@ -1,19 +1,19 @@
 import React from "react";
-import SolutionDetailClient from "../../components/slick/SolutionDetailClient";
-import SlidePartner from "../../components/SlidePartner/index";
+import SolutionDetailClient from "@components/slick/SolutionDetailClient";
+import SlidePartner from "@components/SlidePartner/index";
 import clsx from "clsx";
-import Test from "../../components/Test";
-import Lightbox from "../../components/LightBox";
+import Test from "@components/Test";
+import Lightbox from "@components/LightBox";
 
 export default async function SolutionDetail({ params }) {
   const { id } = await params;
-  
+
   return (
     <div className="content-page">
       {/* <SolutionDetailClient /> */}
       {/* <SlidePartner /> */}
       {/* <Test /> */}
-      <Lightbox
+      {/* <Lightbox
         isOpen={true}
         listImages={[
           "/slides/hinh1.jpg",
@@ -23,7 +23,7 @@ export default async function SolutionDetail({ params }) {
           "/slides/hinh5.jpg",
         ]}
         indexImg={2}
-      />
+      /> */}
     </div>
   );
 }

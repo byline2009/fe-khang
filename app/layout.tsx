@@ -1,8 +1,14 @@
+"use client";
 import "../styles/global.scss";
 import Header from "../components/header/Header";
+import MobileMenu from "../components/MobileMenu";
 import Footer from "../components/footer/Footer";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import dynamic from "next/dynamic";
+import { useState } from "react";
+import Drawer from "react-modern-drawer";
+import 'react-modern-drawer/dist/index.css'
 
 config.autoAddCss = false;
 export default function RootLayout({
@@ -10,6 +16,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDrawer = () => {
+    console.log("isOpen", isOpen);
+    setIsOpen(prev => !prev)
+
+  }
   return (
     <html lang="en">
       <head>
@@ -26,10 +38,20 @@ export default function RootLayout({
       <body
       >
         <div className="main-layout">
-          <Header />
+          <Header toggleDrawer={toggleDrawer} isOpen={isOpen} />
           {children}
         </div>
-
+        <Drawer
+          open={isOpen}
+          onClose={toggleDrawer}
+          direction="left"
+          className="houze-drawer"
+          size={300}
+          zIndex={9999}
+          style={{ height: '100%' }}
+        >
+          <MobileMenu toggleMenu={toggleDrawer} isOpen={isOpen} />
+        </Drawer>
       </body>
     </html>
   );

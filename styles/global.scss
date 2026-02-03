@@ -6,6 +6,8 @@
 @import "./pages/solution-detail.scss";
 @import "../components/SlidePartner/slide-partner.scss";
 @import "../components/LightBox/light-box.scss";
+@import "../components/MobileMenu/mobile-menu.scss";
+
 * {
   box-sizing: border-box;
 }
@@ -46,4 +48,45 @@ body {
 }
 .lock-scroll {
   overflow: hidden;
+}
+.btn-toggleMenu {
+  background: none;
+  border: 0;
+  width: 24px;
+  height: 15px;
+  outline: none;
+  position: relative;
+  padding: 0;
+  display: none;
+  @media (max-width: 960px) {
+    display: block;
+    order: 1;
+  }
+  span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: #000;
+    margin-bottom: 6px;
+    transition: all 0.3s;
+    &:nth-child(1) {
+      transform-origin: top left;
+    }
+    &:nth-child(3) {
+      transform-origin: bottom left;
+    }
+  }
+  &.isOpen {
+    span {
+      &:nth-child(1) {
+        transform: rotate(37deg);
+      }
+      &:nth-child(3) {
+        transform: rotate(-37deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+    }
+  }
 }

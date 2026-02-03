@@ -6,18 +6,33 @@ import { useEffect, useState } from "react";
 import { menuData } from "@/config/constants";
 import Link from "next/link";
 
-const Header = () => {
+const Header = (props) => {
   const [hasToken, setHasToken] = useState(false);
-
+  const [isOpenMenu, setIsOpenMenu] = useState(props.isOpen);
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     setHasToken(!!token);
   }, []);
+  const handleMenu = () => {
+    // setIsOpenMenu((prev) => !prev);
+    props.toggleDrawer();
+  };
+  useEffect(() => {
+    setIsOpenMenu(props.isOpen);
+  }, [props.isOpen]);
 
   if (!hasToken) return null; // ❌ không render header
   return (
     <div className="header">
       <div className="header-top">
+        <button
+          className={`btn-toggleMenu ${isOpenMenu && "isOpen"}`}
+          onClick={() => handleMenu()}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <div className="logo-group">
           {/* <button className="btn-toggleMenu hide-desktop">Button Mobile</button> */}
           <div className="block-center">

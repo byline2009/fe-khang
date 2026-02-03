@@ -21,6 +21,7 @@
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-modern-drawer": "^1.4.0",
     "react-slick": "^0.31.0",
     "sass": "^1.97.2",
     "scss": "^0.2.4",
