@@ -7,7 +7,9 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import Drawer from "react-modern-drawer";
+const Drawer = dynamic(() => import("react-modern-drawer"), {
+  ssr: false,
+});
 import 'react-modern-drawer/dist/index.css'
 
 config.autoAddCss = false;
